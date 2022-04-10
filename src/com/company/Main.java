@@ -72,7 +72,7 @@ public class Main {
 
 natalia.getSalary();
 
-
+int a = 2;
         int j = 2;
         long l = 123435564;
         short s = 32;

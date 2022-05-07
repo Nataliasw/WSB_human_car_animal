@@ -2,15 +2,17 @@ package com.company;
 import com.company.devices.*;
 import java.time.LocalDateTime;
 
-public class Human {
+public class Human  extends Animal{
     String firstname;
     String lastname;
-    Integer age;
-    Boolean isAlive;
     Phone mobile;
     Animal pet;
     private Car car;
     private Double salary;
+
+    public Human(){
+        super("homo sapiens");
+   };
 
     public String toString(){
         return firstname+" "+lastname+" "+age;

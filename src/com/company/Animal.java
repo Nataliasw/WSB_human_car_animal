@@ -51,6 +51,11 @@ public class Animal {
         }
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
     void takeForWalk() {
         if (isAlive) {
             weight -= 1.0;

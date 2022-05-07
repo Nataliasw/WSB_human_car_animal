@@ -1,21 +1,26 @@
 package com.company.devices;
 
-public class Car {
-    final String model;
-    final String producer;
+public class Car extends Device {
     String color;
     Double millage;
     Double weighting = 1500.0;
     public Double value = 500.0;
 
-    public Car(String model, String producer) {
-        this.model = model;
-        this.producer = producer;
+    public Car(String producer, String model, int yearOfProduction) {
+        super(producer, model, yearOfProduction);
     }
 
-    public String toString(){
-        return model+" "+producer;
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "color='" + color + '\'' +
+                ", millage=" + millage +
+                ", weighting=" + weighting +
+                ", value=" + value +
+                '}';
     }
+
     public boolean equals(Object o){
         if(this == o){
             return true;

@@ -1,15 +1,15 @@
-package com.company;
+package com.company.creatures;
 
 public class Animal {
     static final Double DEFAULT_WEIGHT = 5.0;
     static final Double DEFAULT_CAT_WEIGHT =2.0;
     static final Double DEFAULT_DOG_WEIGHT = 3.0;
-
-    final String species;
+    public final String species;
     private Double weight = 10.0;
     Integer age;
-    String name;
-    Boolean isAlive;
+    public String name;
+    public Boolean isAlive;
+
 
     public Animal(String species) {
         this.isAlive = true;
@@ -56,7 +56,7 @@ public class Animal {
         return super.hashCode();
     }
 
-    void takeForWalk() {
+    public void takeForWalk() {
         if (isAlive) {
             weight -= 1.0;
             System.out.println("nice walk, thx");

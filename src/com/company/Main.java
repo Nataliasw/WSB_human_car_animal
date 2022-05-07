@@ -1,5 +1,8 @@
 package com.company;
 import com.company.devices.*;
+import com.company.creatures.Animal;
+import com.company.creatures.Human;
+import com.company.creatures.Pet;
 
 public class Main {
 
@@ -50,10 +53,10 @@ public class Main {
         Human natalia = new Human();
         natalia.firstname= "Natalia";
         natalia.lastname= "swiercz";
-        natalia.pet = dog;
+        natalia.pett = dog;
         natalia.mobile = new Phone("nokia","3320",1999);
-        natalia.pet.feed();
-        System.out.println(natalia.pet.name);
+        natalia.pett.feed();
+        System.out.println(natalia.pett.name);
 //Car
         //natalia.car = new Car("stinger","kia");
         //natalia.car.color = "red";
@@ -98,7 +101,10 @@ System.out.println(marek);
 //Klasy i dziedziczenie
 
 natalia.getCar().turnOn();
-
-
+//sprawdzanie czy obiekt jest jakas klasa
+        System.out.println(natalia.getCar() instanceof Car);
+        System.out.println(natalia.getCar() instanceof Device);
     }
+
+    Pet szarik = new Pet("felis");
 }

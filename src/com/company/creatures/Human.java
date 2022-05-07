@@ -1,18 +1,18 @@
-package com.company;
+package com.company.creatures;
 import com.company.devices.*;
 import java.time.LocalDateTime;
 
-public class Human  extends Animal{
-    String firstname;
-    String lastname;
-    Phone mobile;
-    Animal pet;
+public class Human  extends Animal {
+    public String firstname;
+    public String lastname;
+    public Phone mobile;
+    public Animal pett;
     private Car car;
     private Double salary;
 
     public Human(){
         super("homo sapiens");
-   };
+   }
 
     public String toString(){
         return firstname+" "+lastname+" "+age;

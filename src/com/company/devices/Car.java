@@ -1,6 +1,6 @@
 package com.company.devices;
 
-public class Car extends Device {
+public class Car extends Device implements Rechargeable {
     String color;
     Double millage;
     Double weighting = 1500.0;
@@ -31,6 +31,20 @@ public class Car extends Device {
         Car car = (Car) o;
         return model.equals(car.model) && producer.equals(car.producer) ;
 
+    }
+    public void turnOn()
+    {System.out.println("Urzadzenie zostalo wlaczone");
+
+    }
+     public int compareTo(Car car ){
+         return (int) (this.millage - car.millage);
+     }
+
+    @Override
+    public void recharge() {
+        System.out.println("podjedz na stacje");
+        System.out.println("zatankuj");
+        System.out.println("zaplac");
     }
 
 }

@@ -1,6 +1,6 @@
 package com.company.devices;
 
-public class Device {
+public abstract class Device {
     final public String producer;
     final public String model;
     final public int yearOfProduction;
@@ -20,9 +20,5 @@ public class Device {
                 '}';
     }
 
-
-    public void turnOn(){
-        System.out.println("Urzadzenie zostalo wlaczone");
-
-    }
+    public abstract void turnOn();
 }

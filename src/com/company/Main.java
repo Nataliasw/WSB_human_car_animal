@@ -8,22 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
- //Animal
 
-        Animal dog = new Animal("cannis");
-        dog.isAlive = true;
-        dog.name = "Szarik";
-
-        System.out.println(dog.name);
-        System.out.println("species: " + dog.species + " name: " + dog.name);
-
-        Animal cat = new Animal("felis");
-
-        cat.isAlive = true;
-        cat.name = "Kotek";
-
-
-        System.out.println("Ten kot to " + cat.name);
 //Phone
         Phone iPhone = new Phone("Apple","10X",2010);
 
@@ -39,24 +24,17 @@ public class Main {
         nokia.os = "Android";
 
         System.out.println("Nokia has a model " + nokia.model);
-//Feed dog
-        dog.feed();
-        dog.feed();
-        dog.feed();
-        System.out.println("Dog weight is " + dog.getWeight());
 
 
-        dog.takeForWalk();
-        dog.takeForWalk();
-        System.out.println("Dog weight after walk is "+ dog.getWeight());
+
+
 //Human
         Human natalia = new Human();
         natalia.firstname= "Natalia";
         natalia.lastname= "swiercz";
-        natalia.pett = dog;
         natalia.mobile = new Phone("nokia","3320",1999);
-        natalia.pett.feed();
-        System.out.println(natalia.pett.name);
+
+
 //Car
         //natalia.car = new Car("stinger","kia");
         //natalia.car.color = "red";
@@ -104,7 +82,13 @@ natalia.getCar().turnOn();
 //sprawdzanie czy obiekt jest jakas klasa
         System.out.println(natalia.getCar() instanceof Car);
         System.out.println(natalia.getCar() instanceof Device);
+
+        Pet szarik = new Pet("felis");
+    Animal bird = new Pet("felis");
+    bird.feed(0.1);
+
     }
 
-    Pet szarik = new Pet("felis");
+
+
 }

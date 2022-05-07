@@ -1,6 +1,6 @@
 package com.company.creatures;
 
-public class Animal {
+public abstract class Animal implements Feedable {
     static final Double DEFAULT_WEIGHT = 5.0;
     static final Double DEFAULT_CAT_WEIGHT =2.0;
     static final Double DEFAULT_DOG_WEIGHT = 3.0;
@@ -8,7 +8,7 @@ public class Animal {
     private Double weight = 10.0;
     Integer age;
     public String name;
-    public Boolean isAlive;
+    public Boolean isAlive = true;
 
 
     public Animal(String species) {
@@ -31,15 +31,13 @@ public class Animal {
 
     }
 
-    public String toString(){
-        return species+" "+name+" "+age+" "+weight;
-    }
+    public abstract String toString();
 
     public Double getWeight(){
         return this.weight;
     }
 
-
+@Override
     public void feed() {
 
         if (isAlive) {
@@ -50,6 +48,15 @@ public class Animal {
             System.out.println("Dog is dead");
         }
     }
+public void feed(double foodWeight){
+    if (isAlive) {
+        weight += foodWeight;
+        System.out.println("thx for food.");
+
+    } else {
+        System.out.println("Dog is dead");
+    }
+}
 
     @Override
     public int hashCode() {
@@ -67,4 +74,5 @@ public class Animal {
             System.out.println("Dog is dead");
         }
     }
+
 }

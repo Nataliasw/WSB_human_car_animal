@@ -1,5 +1,5 @@
 package com.company;
-
+import com.company.devices.*;
 import java.time.LocalDateTime;
 
 public class Human {
@@ -7,11 +7,14 @@ public class Human {
     String lastname;
     Integer age;
     Boolean isAlive;
+    Phone mobile;
+    Animal pet;
+    private Car car;
+    private Double salary;
 
-     Phone mobile;
-     Animal pet;
-     private Car car;
-     private Double salary;
+    public String toString(){
+        return firstname+" "+lastname+" "+age;
+    }
 
      public Car getCar(){
          return this.car;

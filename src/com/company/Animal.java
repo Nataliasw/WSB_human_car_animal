@@ -31,6 +31,10 @@ public class Animal {
 
     }
 
+    public String toString(){
+        return species+" "+name+" "+age+" "+weight;
+    }
+
     public Double getWeight(){
         return this.weight;
     }

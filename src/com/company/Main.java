@@ -1,6 +1,5 @@
 package com.company;
-
-import jdk.swing.interop.SwingInterOpUtils;
+import com.company.devices.*;
 
 public class Main {
 
@@ -27,7 +26,7 @@ public class Main {
 
         iPhone.producer = "Apple";
         iPhone.model = "10X";
-        iPhone.screeSize = 10.1;
+        iPhone.screenSize = 10.1;
         iPhone.os = "IOS";
 
         System.out.println("This iPhone is produced by " + iPhone.producer);
@@ -35,7 +34,7 @@ public class Main {
         Phone nokia = new Phone();
         nokia.producer = "Nokia";
         nokia.model = "3110i";
-        nokia.screeSize = 8.1;
+        nokia.screenSize = 8.1;
         nokia.os = "Android";
 
         System.out.println("Nokia has a model " + nokia.model);
@@ -84,10 +83,17 @@ int a = 2;
 
 natalia.setCar(new Car ("bravo", "fiat"));
 
+Human marek = new Human();
+marek.firstname= "Marek";
+marek.lastname= "Markowicz";
+marek.setSalary(1000.0);
+
+marek.setCar(new Car ("bravo", "fiat"));
+
+System.out.println(natalia.getCar().equals(marek.getCar()));
+System.out.println(natalia.getCar());
+System.out.println(marek.getCar());
+System.out.println(marek);
 
     }
-
-
-
-
 }

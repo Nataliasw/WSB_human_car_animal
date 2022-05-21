@@ -1,11 +1,14 @@
 package com.company.creatures;
 
-public abstract class Animal implements Feedable {
+import com.company.Sellable;
+
+public abstract class Animal implements Feedable, Sellable {
     static final Double DEFAULT_WEIGHT = 5.0;
     static final Double DEFAULT_CAT_WEIGHT =2.0;
     static final Double DEFAULT_DOG_WEIGHT = 3.0;
+    private static final double DEFAULT_FOOD_WEIGHT = 1.0;
     public final String species;
-    private Double weight = 10.0;
+    protected Double weight = 10.0;
     Integer age;
     public String name;
     public Boolean isAlive = true;
@@ -31,6 +34,7 @@ public abstract class Animal implements Feedable {
 
     }
 
+
     public abstract String toString();
 
     public Double getWeight(){
@@ -39,14 +43,7 @@ public abstract class Animal implements Feedable {
 
 @Override
     public void feed() {
-
-        if (isAlive) {
-            weight += 1.0;
-            System.out.println("thx for food.");
-
-        } else {
-            System.out.println("Dog is dead");
-        }
+     this.feed(DEFAULT_FOOD_WEIGHT);
     }
 public void feed(double foodWeight){
     if (isAlive) {
@@ -73,6 +70,23 @@ public void feed(double foodWeight){
         } else {
             System.out.println("Dog is dead");
         }
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price){
+        if(seller.pett != null && (seller.pett instanceof Human == false)){
+            if(buyer.salary >= price){
+                seller.salary += price;
+                buyer.salary -= price;
+                buyer.pett = seller.pett;
+                seller.pett = null;
+                System.out.println("transakcja przebiegla pomyslnie");
+            } else {
+                System.out.println("nie masz tyle kasy zeby kupic zwierze");
+            }
+
+        }
+
     }
 
 }

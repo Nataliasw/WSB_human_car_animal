@@ -22,7 +22,10 @@ public class FarmAnimal extends Animal implements Edible{
 
     @Override
     public void beEaten() {
+        this.isAlive = false;
+        this.weight = 0.0;
         System.out.println("ugotuj");
         System.out.println("zjedz");
+
     }
 }

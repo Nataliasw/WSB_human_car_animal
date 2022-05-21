@@ -1,6 +1,7 @@
 package com.company.devices;
 
-public abstract class Device {
+
+public abstract class Device  {
     final public String producer;
     final public String model;
     final public int yearOfProduction;
@@ -21,4 +22,9 @@ public abstract class Device {
     }
 
     public abstract void turnOn();
-}
+
+
+
+ }
+
+

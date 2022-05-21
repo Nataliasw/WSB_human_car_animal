@@ -1,6 +1,10 @@
 package com.company.devices;
 
-public class Phone extends Device implements Rechargeable{
+import com.company.Sellable;
+import com.company.creatures.Human;
+import org.jetbrains.annotations.NotNull;
+
+public class Phone extends Device implements Rechargeable, Sellable {
 
     public Double screenSize;
     public String os;
@@ -21,5 +25,20 @@ public class Phone extends Device implements Rechargeable{
         System.out.println("znajdz wolne gniazdko");
         System.out.println("laduje");
         System.out.println("naladowane");
+    }
+
+
+    public void sell(@NotNull Human seller, Human buyer, Double price) {
+        if (seller.mobile != null) {
+            if (buyer.salary >= price) {
+                seller.salary += price;
+                buyer.salary -= price;
+                seller.mobile = null;
+                System.out.println("transakcja przebiegla pomyslnie");
+            } else {
+                System.out.println("nie masz tyle kasy zeby kupic telefon");
+            }
+
+        }
     }
 }

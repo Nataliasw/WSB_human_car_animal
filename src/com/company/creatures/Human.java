@@ -2,13 +2,14 @@ package com.company.creatures;
 import com.company.devices.*;
 import java.time.LocalDateTime;
 
-public class Human  extends Animal {
+public class Human extends Animal {
     public String firstname;
     public String lastname;
     public Phone mobile;
     public Animal pett;
-    private Car car;
-    private Double salary;
+    public Car car;
+    public Double salary;
+    int cash;
 
     public Human(){
         super("homo sapiens");
@@ -45,11 +46,7 @@ public class Human  extends Animal {
     }
 
     public void setSalary(Double salary){
-        //walidacje
-        //integracje
-        //zapis do bazy danych
-        //logi
-        //powiadomienie
+
        if(salary<0){
            System.out.println("Salary cannot be less than 0");
        }

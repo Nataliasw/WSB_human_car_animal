@@ -1,8 +1,7 @@
 package com.company;
+
 import com.company.devices.*;
-import com.company.creatures.Animal;
-import com.company.creatures.Human;
-import com.company.creatures.Pet;
+import com.company.creatures.*;
 
 public class Main {
 
@@ -10,7 +9,7 @@ public class Main {
 
 
 //Phone
-        Phone iPhone = new Phone("Apple","10X",2010);
+        Phone iPhone = new Phone("Apple", "10X", 2010);
 
 
         iPhone.screenSize = 10.1;
@@ -18,7 +17,7 @@ public class Main {
 
         System.out.println("This iPhone is produced by " + iPhone.producer);
 
-        Phone nokia = new Phone("nokia","2344",2000);
+        Phone nokia = new Phone("nokia", "2344", 2000);
 
         nokia.screenSize = 8.1;
         nokia.os = "Android";
@@ -26,13 +25,11 @@ public class Main {
         System.out.println("Nokia has a model " + nokia.model);
 
 
-
-
 //Human
         Human natalia = new Human();
-        natalia.firstname= "Natalia";
-        natalia.lastname= "swiercz";
-        natalia.mobile = new Phone("nokia","3320",1999);
+        natalia.firstname = "Natalia";
+        natalia.lastname = "swiercz";
+        natalia.mobile = new Phone("nokia", "3320", 1999);
 
 
 //Car
@@ -43,13 +40,13 @@ public class Main {
 //New car
         //natalia.car = new Car("passat","vw");
         //System.out.println(natalia.car.color);
-        Car fiat = new Car("bravo","fiat",1980);
+        Car fiat = new Car("bravo", "fiat", 1980);
 //Salary
         natalia.setSalary(1000.0);
 
-natalia.getSalary();
+        natalia.getSalary();
 
-int a = 2;
+        int a = 2;
         int j = 2;
         long l = 123435564;
         short s = 32;
@@ -59,36 +56,48 @@ int a = 2;
         char c = 'c';
         byte bt;
 
-natalia.setCar(new Car ("bravo", "fiat",2000));
+        natalia.setCar(new Car("bravo", "fiat", 2000));
 
-Human marek = new Human();
-marek.firstname= "Marek";
-marek.lastname= "Markowicz";
-marek.setSalary(1000.0);
+        Human marek = new Human();
+        marek.firstname = "Marek";
+        marek.lastname = "Markowicz";
+        marek.setSalary(1000.0);
 
-natalia.feed();
+        natalia.feed();
 
 
-marek.setCar(new Car ("bravo", "fiat",1997));
+        marek.setCar(new Car("bravo", "fiat", 1997));
 
-System.out.println(natalia.getCar().equals(marek.getCar()));
-System.out.println(natalia.getCar());
-System.out.println(marek.getCar());
-System.out.println(marek);
+        System.out.println(natalia.getCar().equals(marek.getCar()));
+        System.out.println(natalia.getCar());
+        System.out.println(marek.getCar());
+        System.out.println(marek);
 
 //Klasy i dziedziczenie
 
-natalia.getCar().turnOn();
+        natalia.getCar().turnOn();
 //sprawdzanie czy obiekt jest jakas klasa
         System.out.println(natalia.getCar() instanceof Car);
         System.out.println(natalia.getCar() instanceof Device);
 
         Pet szarik = new Pet("felis");
-    Animal bird = new Pet("felis");
-    bird.feed(0.1);
+        Animal bird = new Pet("felis");
+        bird.feed(0.1);
+//sell
+        Human seller = new Human();
+        Phone iphone = new Phone("iphone", "10", 2010);
+        Pet pett = new Pet("felis");
+
+        seller.mobile = iphone;
+        seller.pett = pett;
+        seller.setSalary(2000.0);
+
+        Human buyer = new Human();
+        buyer.setSalary(2000.0);
+
+        iphone.sell(seller, buyer, 20.0);
 
     }
-
 
 
 }

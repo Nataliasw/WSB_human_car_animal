@@ -1,6 +1,10 @@
 package com.company.devices;
 
-public class Car extends Device implements Rechargeable {
+import com.company.Sellable;
+import com.company.creatures.Human;
+import org.jetbrains.annotations.NotNull;
+
+public class Car extends Device implements Rechargeable, Sellable {
     String color;
     Double millage;
     Double weighting = 1500.0;
@@ -45,6 +49,20 @@ public class Car extends Device implements Rechargeable {
         System.out.println("podjedz na stacje");
         System.out.println("zatankuj");
         System.out.println("zaplac");
+    }
+
+    public void sell(@NotNull Human seller, Human buyer, Double price) {
+        if (seller.car != null) {
+            if (buyer.salary >= price) {
+                seller.salary += price;
+                buyer.salary -= price;
+                seller.mobile = null;
+                System.out.println("transakcja przebiegla pomyslnie");
+            } else {
+                System.out.println("nie masz tyle kasy zeby kupic auto");
+            }
+
+        }
     }
 
 }

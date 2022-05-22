@@ -4,10 +4,18 @@ import com.company.Sellable;
 import com.company.creatures.Human;
 import org.jetbrains.annotations.NotNull;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Phone extends Device implements Rechargeable, Sellable {
 
     public Double screenSize;
     public String os;
+    static final String DEFAULT_APP_VERSION  = "latest";
+    static final String DEFAULT_SERVER = "play.store.com";
+
 
     public Phone(String producer, String model, int yearOfProduction) {
         super(producer, model, yearOfProduction);
@@ -28,17 +36,57 @@ public class Phone extends Device implements Rechargeable, Sellable {
     }
 
 
-    public void sell(@NotNull Human seller, Human buyer, Double price) {
-        if (seller.mobile != null) {
-            if (buyer.salary >= price) {
-                seller.salary += price;
-                buyer.salary -= price;
-                seller.mobile = null;
-                System.out.println("transakcja przebiegla pomyslnie");
-            } else {
-                System.out.println("nie masz tyle kasy zeby kupic telefon");
-            }
+    public void sell(@NotNull Human seller, Human buyer, Double price) throws Exception {
+        if(seller.mobile != this){
+            throw new Exception("Sprzedawca nie ma telefonu");
 
         }
+        if(buyer.cash < price){
+            throw new Exception("Kupujący nie ma kasy");
+        }
+        seller.cash += price;
+        buyer.cash -= price;
+        buyer.mobile = this;
+        seller.mobile=null;
+        System.out.println("transakcja przebiegla pomyslnie");
     }
+
+    public void installAnApp(String name, String version, String server){
+        try{
+        URL url = new URL("https",server,443,name+ "="+version);
+        this.installAnApp(url);}
+        catch(MalformedURLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void installAnApp(List<String> appNames){
+    for(String appName: appNames){
+        installAnApp(appName);
+    }
+
+    }
+
+
+    public void installAnApp(String name, String version){
+        this.installAnApp(name,version,DEFAULT_SERVER);
+
+
+    }
+
+
+    public void installAnApp(String name){
+        this.installAnApp(name,DEFAULT_APP_VERSION);
+
+    }
+
+    public void installAnApp(URL url){
+        System.out.println("Aplikacja " + url.getHost() + " o wersji "+ url.getFile() + " na serwerze "+ url.getPath()+" zainstalowana");
+
+    }
+
+    @Override
+    public String toString(){  return "This is to string for phone";};
+
 }

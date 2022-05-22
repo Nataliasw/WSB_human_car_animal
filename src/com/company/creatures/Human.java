@@ -9,7 +9,7 @@ public class Human extends Animal {
     public Animal pett;
     public Car car;
     public Double salary;
-    int cash;
+    public Double cash = 0.0;
 
     public Human(){
         super("homo sapiens");

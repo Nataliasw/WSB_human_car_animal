@@ -73,19 +73,22 @@ public void feed(double foodWeight){
     }
 
     @Override
-    public void sell(Human seller, Human buyer, Double price){
-        if(seller.pett != null && (seller.pett instanceof Human == false)){
-            if(buyer.salary >= price){
-                seller.salary += price;
-                buyer.salary -= price;
-                buyer.pett = seller.pett;
-                seller.pett = null;
-                System.out.println("transakcja przebiegla pomyslnie");
-            } else {
-                System.out.println("nie masz tyle kasy zeby kupic zwierze");
-            }
-
+    public void sell(Human seller, Human buyer, Double price) throws Exception{
+        if(seller.pett !=this || seller.pett instanceof Human ){
+            throw new Exception("Sprzedawca nie ma zwierzaka");
         }
+        if(buyer.salary < price){
+            throw new Exception("Kupujący nie ma kasy");
+        }
+
+        seller.salary += price;
+        buyer.salary -= price;
+        buyer.pett = seller.pett;
+        seller.pett = null;
+        System.out.println("transakcja przebiegla pomyslnie");
+
+
+
 
     }
 

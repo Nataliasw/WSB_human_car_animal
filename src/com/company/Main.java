@@ -3,6 +3,8 @@ package com.company;
 import com.company.devices.*;
 import com.company.creatures.*;
 
+import java.sql.SQLOutput;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -40,7 +42,7 @@ public class Main {
 //New car
         //natalia.car = new Car("passat","vw");
         //System.out.println(natalia.car.color);
-        Car fiat = new Car("bravo", "fiat", 1980);
+        Car fiat = new LPG("bravo", "fiat", 1980);
 //Salary
         natalia.setSalary(1000.0);
 
@@ -56,7 +58,7 @@ public class Main {
         char c = 'c';
         byte bt;
 
-        natalia.setCar(new Car("bravo", "fiat", 2000));
+        natalia.setCar(new Diesel("bravo", "fiat", 2000));
 
         Human marek = new Human();
         marek.firstname = "Marek";
@@ -66,7 +68,7 @@ public class Main {
         natalia.feed();
 
 
-        marek.setCar(new Car("bravo", "fiat", 1997));
+        marek.setCar(new Electric("bravo", "fiat", 1997));
 
         System.out.println(natalia.getCar().equals(marek.getCar()));
         System.out.println(natalia.getCar());
@@ -84,20 +86,48 @@ public class Main {
         Animal bird = new Pet("felis");
         bird.feed(0.1);
 //sell
-        Human seller = new Human();
-        Phone iphone = new Phone("iphone", "10", 2010);
-        Pet pett = new Pet("felis");
+        Human kacper = new Human();
 
-        seller.mobile = iphone;
-        seller.pett = pett;
-        seller.setSalary(2000.0);
+        Human brotherInLaw = new Human();
+        brotherInLaw.cash = 20000.0;
+        Phone iphone = new Phone("iphone", "10", 2010);
+        kacper.mobile = iphone;
+        Pet pett = new Pet("felis");
+        Car passat1 = new LPG("bravo", "fiat", 1997);
+        kacper.salary=100000.0;
+        kacper.setCar(passat1);
+//sell car
+        try {
+            passat1.sell(kacper, brotherInLaw, 1000.0);
+
+        } catch (Exception e) {
+            System.out.println("Nie udalo sie sprzedac");
+            e.printStackTrace();
+
+        }
+        try {
+            fiat.sell(kacper, brotherInLaw, 1000.0);
+
+        } catch (Exception e) {
+            System.out.println("Nie udalo sie sprzedac");
+        }
+//sell phone
+        try {
+            iphone.sell(kacper, brotherInLaw, 1000.0);
+
+        } catch (Exception e) {
+            System.out.println("Nie udalo sie sprzedac");
+        }
+
 
         Human buyer = new Human();
         buyer.setSalary(2000.0);
+//INSTALL APP
 
-        iphone.sell(seller, buyer, 20.0);
+        iphone.installAnApp("Youtube","10.2","sklep");
+        iphone.installAnApp("Youtube");
+        iphone.installAnApp("Youtube","10.2");
+
 
     }
-
-
 }

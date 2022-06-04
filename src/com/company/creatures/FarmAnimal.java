@@ -13,9 +13,9 @@ public class FarmAnimal extends Animal implements Edible{
 
     @Override
     public String toString() {
-        return "FarmAnimal{" +
+        return "FarmAnimal{" + species + " " +
                 "givesMilk=" + givesMilk +
-                ", givesEggs=" + givesEggs +
+                ", givesEggs=" + givesEggs +  ",name= " + name +  "age= " + age +
                 '}';
     }
 

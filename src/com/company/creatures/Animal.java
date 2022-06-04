@@ -2,14 +2,14 @@ package com.company.creatures;
 
 import com.company.Sellable;
 
-public abstract class Animal implements Feedable, Sellable {
+public  class Animal implements Feedable, Sellable {
     static final Double DEFAULT_WEIGHT = 5.0;
     static final Double DEFAULT_CAT_WEIGHT =2.0;
     static final Double DEFAULT_DOG_WEIGHT = 3.0;
     private static final double DEFAULT_FOOD_WEIGHT = 1.0;
     public final String species;
     protected Double weight = 10.0;
-    Integer age;
+    public int age;
     public String name;
     public Boolean isAlive = true;
 
@@ -35,7 +35,11 @@ public abstract class Animal implements Feedable, Sellable {
     }
 
 
-    public abstract String toString();
+    @Override
+    public String toString() {
+        return "Pet{" + species + " "  + " ,name= " + name +  " age= " + age +
+                '}';
+    }
 
     public Double getWeight(){
         return this.weight;
@@ -73,7 +77,7 @@ public void feed(double foodWeight){
     }
 
     @Override
-    public void sell(Human seller, Human buyer, Double price) throws Exception{
+    public void sell(Human seller, Human buyer, Double price, int number) throws Exception{
         if(seller.pett !=this || seller.pett instanceof Human ){
             throw new Exception("Sprzedawca nie ma zwierzaka");
         }

@@ -1,27 +1,35 @@
 package com.company.devices;
 
-import com.company.Sellable;
+
 import com.company.creatures.Human;
 import org.jetbrains.annotations.NotNull;
+import com.company.Sellable;
 
-public abstract class Car extends Device implements Rechargeable, Sellable {
+import java.util.List;
+
+
+public abstract class Car extends Device implements Rechargeable, Sellable, Comparable<Car> {
     String color;
     Double millage;
     Double weighting = 1500.0;
-    public Double value = 500.0;
+    public double value;
+    public List<Human> owners;
 
-    public Car(String producer, String model, int yearOfProduction) {
-        super(producer, model, yearOfProduction);
+
+
+    public Car(String producer, String model, int yearOfProduction, double value) {
+        super(producer, model, yearOfProduction, value);
     }
 
 
     @Override
     public String toString() {
         return "Car{" +
-                "color='" + color + '\'' +
-                ", millage=" + millage +
-                ", weighting=" + weighting +
-                ", value=" + value +
+                "producer='" + producer + '\'' +
+                ",model='" + model + '\'' +
+                ",yearOfProduction='" + yearOfProduction + '\'' +
+                ",value=" + value +
+                ",color='" + color + '\'' +
                 '}';
     }
 
@@ -43,9 +51,7 @@ public abstract class Car extends Device implements Rechargeable, Sellable {
     {System.out.println("Urzadzenie zostalo wlaczone");
 
     }
-     public int compareTo(Car car ){
-         return (int) (this.millage - car.millage);
-     }
+
 
     @Override
     public void recharge() {
@@ -54,22 +60,39 @@ public abstract class Car extends Device implements Rechargeable, Sellable {
         System.out.println("zaplac");
     }
 
-    public void sell(@NotNull Human seller, Human buyer, Double price) throws Exception {
-        if (seller.getCar() != this) {
-            throw new Exception("Sprzedawca nie ma samochodu");
+    public void sell(@NotNull Human seller, Human buyer, Double price, int number) throws Exception {
+        if (seller.getCar(number) != this) {
+            throw new Exception("Sprzedawca nie ma samochodu w tym miejscu w garazu");
 
+        }
+        if(buyer.garage.length == buyer.garageCapacity ){
+            throw new Exception("Kupujacy nie ma miejsca w garazu");
         }
         if(buyer.cash < price){
             throw new Exception("Kupujący nie ma kasy");
         }
         seller.cash += price;
         buyer.cash -= price;
-        buyer.car = this;
-        seller.car=null;
+
+        for(int i = 0; i < buyer.garage.length; i++)
+            if(buyer.garage[i] == null) {
+                buyer.garage[i] = this;
+                break;
+            }
+        seller.garage[number]=null;
         System.out.println("transakcja przebiegla pomyslnie");
 
 
-        }
+    }
+
+
+        public int compareTo(Car o){
+            if(this.yearOfProduction != o.yearOfProduction){
+                return this.yearOfProduction - o.yearOfProduction;
+            }
+            return this.producer.compareTo(o.producer);
+        };
+
 
 
 }

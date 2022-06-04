@@ -5,8 +5,9 @@ public abstract class Device  {
     final public String producer;
     final public String model;
     final public int yearOfProduction;
+    public double value;
 
-    public Device(String producer, String model, int yearOfProduction) {
+    public Device(String producer, String model, int yearOfProduction, double value) {
         this.producer = producer;
         this.model = model;
         this.yearOfProduction = yearOfProduction;
@@ -18,6 +19,7 @@ public abstract class Device  {
                 "producer='" + producer + '\'' +
                 ", model='" + model + '\'' +
                 ", yearOfProduction=" + yearOfProduction +
+                ",value=" + value +
                 '}';
     }
 

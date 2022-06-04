@@ -10,9 +10,9 @@ public class Pet extends Animal{
 
     @Override
     public String toString() {
-        return "Pet{" +
+        return "Pet{" + species + " " +
                 "owner='" + owner + '\'' +
-                ", City='" + City + '\'' +
+                ", City='" + City + '\'' + ",name= " + name +  "age= " + age +
                 '}';
     }
 }

@@ -17,8 +17,8 @@ public class Phone extends Device implements Rechargeable, Sellable {
     static final String DEFAULT_SERVER = "play.store.com";
 
 
-    public Phone(String producer, String model, int yearOfProduction) {
-        super(producer, model, yearOfProduction);
+    public Phone(String producer, String model, int yearOfProduction, double value) {
+        super(producer, model, yearOfProduction, value);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class Phone extends Device implements Rechargeable, Sellable {
     }
 
 
-    public void sell(@NotNull Human seller, Human buyer, Double price) throws Exception {
+    public void sell(@NotNull Human seller, Human buyer, Double price, int number) throws Exception {
         if(seller.mobile != this){
             throw new Exception("Sprzedawca nie ma telefonu");
 

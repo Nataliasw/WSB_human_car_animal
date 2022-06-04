@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
 
 //Phone
@@ -239,17 +239,30 @@ public class Main {
 //        return animals;
 
       Human natalia = new Human(3);
+      natalia.firstname= "Natalia";
+      natalia.lastname="Kowalska";
       natalia.setSalary(10000000.0);
-      natalia.setCar(new Diesel("Toyta","Corolla",2020,10000.0),0);
+      Car toyota = new Diesel("Toyta","Corolla",2020,10000.0);
+      natalia.setCar(toyota,0);
       natalia.setCar(new LPG("Hyundai", "i30",2005,20000.0),1);
       natalia.setCar(new LPG("BMW", "GT3",2009,12000.0),2);
 
-      natalia.sortGarage();
+      //natalia.sortGarage();
+      System.out.println(natalia.getCar(0).owners);
+ // System.out.println(natalia.getCar(0));
+      Human karol =  new Human(1);
+      karol.firstname = "Karol";
+      karol.lastname ="Nowak";
+      karol.setSalary(10000000.0);
+      karol.cash = 100000.0;
+       toyota.sell(natalia, karol, 1000.0 );
 
 
+      System.out.println(toyota.owners);
 
-
-
+      System.out.println(toyota.checkForOwner(natalia));
+      System.out.println(toyota.checkIfSoldTo(karol,natalia));
+      System.out.println(toyota.numberOfTransactions());
 
 
 

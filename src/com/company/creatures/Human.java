@@ -24,7 +24,7 @@ public class Human extends Animal {
     }
 
     public String toString() {
-        return firstname + " " + lastname + " " + age;
+        return firstname + " " + lastname;
     }
 
     public Car getCar(int number) {
@@ -35,9 +35,11 @@ public class Human extends Animal {
     public void setCar(Car car, int number) {
         if (this.salary > car.value) {
             System.out.println("Samochod kupiony za gotowke");
+            car.owners.add(this);
             this.garage[number] = car;
         } else if (this.salary > car.value / 12.0) {
             System.out.println("Samochod kupiony na kredyt");
+            car.owners.add(this);
             this.garage[number] = car;
         } else {
             System.out.println("Zapisz sie na studia albo poproś o podwyżkę");

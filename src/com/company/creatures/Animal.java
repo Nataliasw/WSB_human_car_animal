@@ -77,7 +77,7 @@ public void feed(double foodWeight){
     }
 
     @Override
-    public void sell(Human seller, Human buyer, Double price, int number) throws Exception{
+    public void sell(Human seller, Human buyer, Double price) throws Exception{
         if(seller.pett !=this || seller.pett instanceof Human ){
             throw new Exception("Sprzedawca nie ma zwierzaka");
         }

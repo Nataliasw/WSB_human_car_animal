@@ -36,7 +36,7 @@ public class Phone extends Device implements Rechargeable, Sellable {
     }
 
 
-    public void sell(@NotNull Human seller, Human buyer, Double price, int number) throws Exception {
+    public void sell(@NotNull Human seller, Human buyer, Double price) throws Exception {
         if(seller.mobile != this){
             throw new Exception("Sprzedawca nie ma telefonu");
 
